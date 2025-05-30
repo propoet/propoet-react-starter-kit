@@ -13,13 +13,17 @@ export default function Home() {
     fetchPosts()
   },[])
   return(
-    <div>
-      <h2>帖子列表</h2>
-      <ul>
+    <div className="container mx-auto p-6 max-w-4xl">
+      <h2 className="text-3xl font-bold mb-6 text-gray-900">帖子列表</h2>
+      <div className="grid gap-4">
         {posts.map((post) => (
-          <li key={post.id}>{post.title}</li>
+          <div key={post.id} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200 hover:border-gray-200">
+            <h3 className="text-lg font-semibold text-gray-800 leading-relaxed">
+              {post.title}
+            </h3>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
