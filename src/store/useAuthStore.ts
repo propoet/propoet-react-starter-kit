@@ -1,16 +1,20 @@
 import {create} from 'zustand'
 
+interface User {
+    id: string
+    name: string
+    email: string
+}
+
 interface AuthState {
-    user: {
-        name: string
-    } | null
-    login: (username: string) => void
+    user: User | null
+    login: (user: User) => void
     logout: () => void
 }
 const useAuthStore = create<AuthState>((set) => ({
     user: null, // 初始状态为未登录
-    login: (username: string) => set({ user: { name: username } }),
-    logout: () => set({user: null}),
+    login: (user: User) => set({ user }),
+    logout: () => set({ user: null }),
 }))
 
 export default useAuthStore
